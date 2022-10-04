@@ -1,0 +1,11 @@
+{
+  "name": "taller.php",
+  "version": "1.0.0",
+  "description": "Taller de PHP para Coppel",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Omar Soto",
+  "license": "ISC"
+}
