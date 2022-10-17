@@ -15,6 +15,7 @@ $items = new Categorias($db);
  
 $data = json_decode(file_get_contents("php://input"));
 
+
 if(!empty($data->categoria_id) && 
    !empty($data->nombre)){ 
 	
