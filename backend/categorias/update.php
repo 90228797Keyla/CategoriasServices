@@ -6,25 +6,22 @@ header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
  
 include_once '../config/Database.php';
-include_once '../class/Items.php';
+include_once '../class/Categorias.php';
  
 $database = new Database();
 $db = $database->getConnection();
  
-$items = new Items($db);
+$items = new Categorias($db);
  
 $data = json_decode(file_get_contents("php://input"));
 
-if(!empty($data->id) && !empty($data->name) && 
-!empty($data->description) && !empty($data->price) && 
-!empty($data->category_id)){ 
+if(!empty($data->categoria_id) && 
+   !empty($data->nombre)){ 
 	
-	$items->id = $data->id; 
-	$items->name = $data->name;
-    $items->description = $data->description;
-    $items->price = $data->price;
-    $items->category_id = $data->category_id;	
-    $items->created = date('Y-m-d H:i:s'); 
+	//$items->id = $data->id; 
+	$items->nombre = $data->nombre;
+    $items->categoria_id = $data->categoria_id;	
+    
 	
 	
 	if($items->update()){     

@@ -6,17 +6,17 @@ header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
  
 include_once '../config/Database.php';
-include_once '../class/Items.php';
+include_once '../class/Categorias.php';
  
 $database = new Database();
 $db = $database->getConnection();
  
-$items = new Items($db);
+$items = new Categorias($db);
  
 $data = json_decode(file_get_contents("php://input"));
 
-if(!empty($data->id)) {
-	$items->id = $data->id;
+if(!empty($data->categoria_id)) {
+	$items->categoria_id = $data->categoria_id;
 	if($items->delete()){    
 		http_response_code(200); 
 		echo json_encode(array("message" => "Item was deleted."));

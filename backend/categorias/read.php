@@ -10,7 +10,7 @@ $db = $database->getConnection();
  
 $items = new Categorias($db);
 
-$items->id = (isset($_GET['id']) && $_GET['id']) ? $_GET['id'] : '0';
+$items->categoria_id = (isset($_GET['id']) && $_GET['id']) ? $_GET['id'] : '0';
 
 $result = $items->read();
 

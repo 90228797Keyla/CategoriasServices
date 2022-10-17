@@ -11,9 +11,9 @@ class Categorias{
     }	
 	
 	function read(){	
-		if($this->id) {
-			$stmt = $this->conn->prepare("SELECT * FROM ".$this->itemsTable." WHERE id = ?");
-			$stmt->bind_param("i", $this->id);					
+		if($this->categoria_id) {
+			$stmt = $this->conn->prepare("SELECT * FROM ".$this->itemsTable." WHERE categoria_id = ?");
+			$stmt->bind_param("i", $this->categoria_id);					
 		} else {
 			$stmt = $this->conn->prepare("SELECT * FROM ".$this->itemsTable);		
 		}		
@@ -30,7 +30,7 @@ class Categorias{
 		
 		$this->nombre = htmlspecialchars(strip_tags($this->nombre));
 		
-		$stmt->bind_param("ssiis", $this->nombre);
+		$stmt->bind_param("s", $this->nombre);
 		
 		if($stmt->execute()){
 			return true;
@@ -43,13 +43,13 @@ class Categorias{
 	 
 		$stmt = $this->conn->prepare("
 			UPDATE ".$this->itemsTable." 
-			SET name= ? 
-			WHERE id = ?");
+			SET nombre= ? 
+			WHERE categoria_id = ?");
 	 
-		$this->id = htmlspecialchars(strip_tags($this->id));
-		$this->name = htmlspecialchars(strip_tags($this->name));
+		$this->categoria_id = htmlspecialchars(strip_tags($this->categoria_id));
+		$this->nombre = htmlspecialchars(strip_tags($this->nombre));
 	 
-		$stmt->bind_param("ssiisi", $this->name, $this->id);
+		$stmt->bind_param("si", $this->nombre, $this->categoria_id);
 		
 		if($stmt->execute()){
 			return true;
@@ -62,11 +62,11 @@ class Categorias{
 		
 		$stmt = $this->conn->prepare("
 			DELETE FROM ".$this->itemsTable." 
-			WHERE id = ?");
+			WHERE categoria_id = ?");
 			
-		$this->id = htmlspecialchars(strip_tags($this->id));
+		$this->categoria_id = htmlspecialchars(strip_tags($this->categoria_id));
 	 
-		$stmt->bind_param("i", $this->id);
+		$stmt->bind_param("i", $this->categoria_id);
 	 
 		if($stmt->execute()){
 			return true;
