@@ -6,7 +6,7 @@ header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
  
 include_once '../config/Database.php';
-include_once '../class/Categorias.php';
+include_once '../class/Categorias.php'; 
  
 $database = new Database();
 $db = $database->getConnection();
@@ -24,7 +24,7 @@ if(!empty($data->categoria_id) &&
     $items->categoria_id = $data->categoria_id;	
     
 	
-	
+	// Ejecucion del metodo update de la instancia categorias
 	if($items->update()){     
 		http_response_code(200);   
 		echo json_encode(array("message" => "Item was updated."));
