@@ -12,8 +12,7 @@ class Login{
 	
 	function auth(){	
         $stmt = $this->conn->prepare("SELECT * FROM ".$this->itemsTable." WHERE usuario = ?");
-        $stmt->bind_param("s", $this->usuario);	
-        	
+        $stmt->bind_param("s", $this->usuario);			
 		$stmt->execute();			
 		$result = $stmt->get_result();		
 		return $result;	
